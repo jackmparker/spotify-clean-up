@@ -1,0 +1,93 @@
+<div class="container">
+  
+  <div class="back">
+    <button class="btn btn-light btn-lg" (click)="startOver()"><i class="fas fa-undo-alt"></i> Start Over</button>
+  </div>
+  
+  <div class="playlist-selection">
+    <h1>Pick Your Playlist</h1>
+    <p>Please select the playlist you want to use as a source, then enter the name of the new playlist you'd like to create.</p>
+    <p><b>Important Note:</b> Playlists can be no more that 900 songs. If you have any playlists larger than this, they will not appear in the list below. You can get around this by breaking up a playlist into multiple smaller playlists then running this tool the necessary number of times.</p>
+    <form [formGroup]="playlistForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+          <div class="input-group mb-3">
+              <select class="form-control" formControlName="sourcePlaylistId">
+                <option *ngFor="let playlist of playlists" value="{{ playlist.id }}">{{ playlist.name }}</option>
+              </select>
+          </div>
+          <div
+            *ngIf="playlistId.invalid && (playlistId.touched || playlistId.dirty)"
+            class="alert alert-danger">
+            You must select a playlist
+          </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group mb-3">
+          <input formControlName="newPlaylistName" type="text" class="form-control" placeholder="New Playlist Name">
+        </div>
+        <div
+            *ngIf="newPlaylistName.invalid && (newPlaylistName.touched || newPlaylistName.dirty)"
+            class="alert alert-danger">
+            You must enter a name for the new playlist
+          </div>
+      </div>
+      <div class="form-group">
+        <!-- <a href="#language" class="btn btn-secondary filter" data-toggle="collapse">Edit Filter Criteria</a> -->
+        <button
+          type="button"
+          class="btn btn-secondary filter"
+          data-toggle="collapse"
+          data-target="#language"
+          [disabled]="!languageConfirm">
+          Edit Filter Criteria
+        </button>
+        <label>
+            <input type="checkbox" name="acknowledge" (change)="toggle()"> <small>I understand that by clicking this button I'm about to view foul language</small>
+        </label>
+        <div class="collapse" id="language">
+          <div class="input-group mb-3">
+            <p><small><b>You may delete or edit the items below or add additional items. Be aware that capitilization does not matter, nor does using every iteration of a word (for example, f*** will also match f***ing). Any matched words will remove the song from the final playlist.</b></small></p>
+            <textarea formControlName="languageFilter" class="form-control"></textarea>
+          </div>
+          <button type="button" class="btn btn-danger" (click)="resetToDefaults()">Reset to defaults</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <button
+          class="btn btn-primary btn-lg btn-block"
+          [disabled]="!playlistForm.valid">Go</button>
+      </div>
+    </form>
+  </div>
+  
+  <div class="status hidden">
+    <ul>
+      <li
+        *ngFor="let item of statuses"
+        [ngClass]="{
+          'waiting': item.status == 'waiting',
+          'running': item.status == 'running',
+          'finished': item.status == 'finished'
+        }">
+        <i class="fas fa-sync-alt fa-spin"></i>
+        <i class="fas fa-check-circle" ></i>
+        {{ item.text }}
+      </li>
+    </ul>
+    <p><b>Activity Log</b></p>
+    <div class="activity-log">
+      {{activityLog}}
+    </div>
+  </div>
+
+  <div class="final hidden">
+    <h1>Finished!</h1>
+    <p>We successfully added {{ finalSongCount }} songs to your playlist.</p>
+  </div>
+
+  <div class="error hidden">
+      <h1>Error!</h1>
+      <p>No songs were found without the matching criteria. Either no clean songs are available or there is an error in the match list.</p>
+    </div>
+
+</div>

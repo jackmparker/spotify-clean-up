@@ -1,0 +1,12 @@
+$green: #1DB954;
+
+a {
+    background-color: $green;
+    border-color: $green;
+}
+
+a:hover {
+    background-color: #fff;
+    color: $green;
+    border-color: $green;
+}

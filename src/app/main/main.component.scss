@@ -1,0 +1,126 @@
+$primary-color: #333;
+$green: #1DB954;
+
+.back {
+    margin: 75px 0;
+}
+
+.auth {
+    h1 {
+        text-align: center;
+        margin-top: 100px;
+    }
+    
+    button {
+        border-radius: 5px;
+        background-color: #eee;
+        font-size: 14px;
+        padding: 80px 0;
+        border: 1px solid #ccc;
+        
+        i {
+            display: block;
+            font-size: 50px;
+            margin-bottom: 25px;
+        }
+    }
+}
+
+.playlist-selection {
+
+    .btn-block {
+        background-color: $green;
+        border-color: $green;
+    }
+
+    .ng-invalid.ng-touched {
+        border-color: red;
+    }
+
+    .form-group {
+        margin-bottom: 30px;
+
+        .alert-danger {
+            margin-top: 5px;
+        }
+    }
+
+    .filter {
+        display: block;
+        margin-bottom: 7px;
+    }
+
+    label {
+        display: block;
+
+        input[type="checkbox"] {
+            display: inline-block;
+            margin-right: 10px;
+        }
+    }
+
+    textarea {
+        height: 75px;
+    }
+}
+
+.status {
+    
+    ul {
+        margin: 0 0 50px;
+        padding: 0;
+        width: 365px;
+
+        li {
+            color: #ddd;
+            list-style: none;
+            font-size: 25px;
+            margin: 20px 0;
+            position: relative;
+            padding-left: 35px;
+            font-weight: 600;
+
+            &.waiting {
+
+                i {
+                    display: none;
+                }
+            }
+
+            &.running {
+                color: $primary-color;
+
+                i.fa-check-circle {
+                    display: none;
+                }
+            }
+
+            &.finished {
+
+                i.fa-sync-alt {
+                    display: none;
+                }
+            }
+
+            i {
+                position: absolute;
+                left: 0;
+                top: 7px;
+            }
+
+            i.fa-check-circle {
+                color: $green;
+            }
+        }
+    }
+
+    .activity-log {
+        background-color: $primary-color;
+        color: #ddd;
+        height: 300px;
+        overflow: scroll;
+        font-family: monospace;
+        font-size: 15px;
+        padding: 10px 20px;
+    }
+}
