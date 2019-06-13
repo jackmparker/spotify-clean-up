@@ -39,7 +39,8 @@ export class LyricsApiService {
 
   getLyrics(songURL: string) {
     return this.http.post(
-      'http://jackmparker.com/spotify/php/get-lyrics.php',
+      //'http://jackmparker.com/spotify/php/get-lyrics.php',
+      'https://murmuring-ravine-76526.herokuapp.com',
       songURL
     );
   }
