@@ -102,7 +102,10 @@ export class MainComponent implements OnInit {
   }
 
   startOver() {
-    window.location.href = '/app';
+    window.location.href = window.location.pathname;
+    
+    //window.location.href = '/app';
+    
     // this.languageConfirm = false;
     // this.playlistForm.reset();
     // this.playlistForm.patchValue({
