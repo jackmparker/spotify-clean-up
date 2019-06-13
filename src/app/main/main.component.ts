@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class MainComponent implements OnInit {
   
+  siteURL: string = encodeURI(window.location.href + 'app');
   spotifyToken: string;
   spotifyUserId: string;
   playlists: any = [];
@@ -43,7 +44,7 @@ export class MainComponent implements OnInit {
   playlistForm = this.fb.group({
     sourcePlaylistId: ['', Validators.required],
     newPlaylistName: ['', Validators.required],
-    languageFilter: ['']
+    languageFilter: ['ass, bitch, cunt, damn, dick, fuck, hell, shit, sex, god, goddamn, jesus, christ']
   });
 
   constructor(
@@ -65,7 +66,7 @@ export class MainComponent implements OnInit {
       // if nothing is found in the URL...
       if(!this.spotifyToken) {
         // authenticate with spotify
-        window.location.href = 'https://accounts.spotify.com/authorize?client_id=1b65d7afe0e94690a089f847c13aedee&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fapp&response_type=token&scope=playlist-read-private,playlist-modify-public,playlist-modify-private';
+        window.location.href = 'https://accounts.spotify.com/authorize?client_id=1b65d7afe0e94690a089f847c13aedee&redirect_uri=' + this.siteURL + '&response_type=token&scope=playlist-read-private,playlist-modify-public,playlist-modify-private';
       } else {
         
         // refresh and remove params
@@ -85,9 +86,6 @@ export class MainComponent implements OnInit {
       
       this.getPlaylists('offset=0&limit=50');
       this.getUserInfo();
-      this.playlistForm.patchValue({
-        languageFilter: 'ass, bitch, cunt, damn, dick, fuck, hell, shit, sex, god, goddamn, jesus, christ'
-      });
     }
   }
 
@@ -139,6 +137,8 @@ export class MainComponent implements OnInit {
       languageFilter: 'ass, bitch, cunt, damn, dick, fuck, hell, shit, sex, god, goddamn, jesus, christ'
     });
   }
+
+
 
   getUserInfo() {
     this.spotifyAPI.getUserInfo(this.spotifyToken)

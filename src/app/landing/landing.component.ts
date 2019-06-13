@@ -12,4 +12,6 @@ export class LandingComponent implements OnInit {
   ngOnInit() {
   }
 
+  siteURL: string = encodeURI(window.location.href + 'app');
+
 }
