@@ -103,41 +103,11 @@ export class MainComponent implements OnInit {
 
   startOver() {
     window.location.href = window.location.pathname;
-    
-    //window.location.href = '/app';
-    
-    // this.languageConfirm = false;
-    // this.playlistForm.reset();
-    // this.playlistForm.patchValue({
-    //   languageFilter: 'ass, bitch, cunt, damn, dick, fuck, hell, shit, sex, god, goddamn, jesus, christ'
-    // });
-    
-    // let form = document.querySelector('.playlist-selection');
-    // form.className = '';
-    // form.classList.add('playlist-selection');
-
-    // let show = document.querySelector('.show');
-    // show.className = '';
-    // show.classList.add('collapse');
-
-    // let status = document.querySelector('.status');
-    // status.className = '';
-    // status.classList.add('status', 'hidden');
-
-    // let final = document.querySelector('.final');
-    // final.className = '';
-    // final.classList.add('final', 'hidden');
-    
-    // let error = document.querySelector('.error');
-    // error.className = '';
-    // error.classList.add('error', 'hidden');
-
-    // this.toggle();
   }
 
   resetToDefaults() {
     this.playlistForm.patchValue({
-      languageFilter: 'ass, bitch, cunt, damn, dick, fuck, hell, shit, sex, god, goddamn, jesus, christ'
+      languageFilter: 'ass, bitch, cunt, damn, dick, fuck, hell, shit, sex, god, jesus, christ, piss'
     });
   }
 

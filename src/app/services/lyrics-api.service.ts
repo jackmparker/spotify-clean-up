@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -39,8 +38,7 @@ export class LyricsApiService {
 
   getLyrics(songURL: string) {
     return this.http.post(
-      //'http://jackmparker.com/spotify/php/get-lyrics.php',
-      'https://murmuring-ravine-76526.herokuapp.com',
+      'https://jackparker.me/spotify-cleanup/index.php',
       songURL
     );
   }
