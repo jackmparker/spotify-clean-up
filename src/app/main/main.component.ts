@@ -247,8 +247,18 @@ export class MainComponent implements OnInit {
        *
       */
 
+     console.log(track.artist);
+
+      if(track.artist.toLowerCase() === 'slaves') {
+        track.artist += ' usa';
+      }
+
+      console.log(track.artist);
+
       let url = 'https://genius.com/';
       let temp = track.artist + ' ' + track.title + ' lyrics';
+
+
       
       // replace ampersand with 'and'
       // remove non alphanumeric characters
