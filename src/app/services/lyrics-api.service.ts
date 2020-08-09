@@ -38,7 +38,7 @@ export class LyricsApiService {
 
   getLyrics(songURL: string) {
     return this.http.post(
-      'https://jackparker.me/spotify-cleanup/index.php',
+      'https://immense-garden-43402.herokuapp.com/',
       songURL
     );
   }
